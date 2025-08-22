@@ -15,9 +15,19 @@ def create_app():
     # Inicializar extensiones
     db.init_app(app)
 
+    # Importar modelos
+    from app.models import Task
+    # Crear tablas
+    with app.app_context():
+        db.create_all()
+
     # Ruta básica para verificar que funciona
     @app.route('/')
     def home():
-        return {'message': 'Task Manager API', 'status': 'running'}
+        return {
+            'message': 'Task Manager API',
+            'status': 'running',
+            'database': 'connected'
+        }
 
     return app
