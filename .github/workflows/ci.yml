@@ -25,7 +25,7 @@ jobs:
         
     - name: Run tests
       run: |
-        pytest tests/ -v --tb=short
+        python3 -m pytest tests/ -v --tb=short
         
     - name: Test Docker build
       run: |
